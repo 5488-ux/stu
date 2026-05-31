@@ -1,0 +1,68 @@
+.learning-page {
+  min-height: 100vh;
+  padding: 24rpx 18rpx calc(24rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.hero-card {
+  padding: 28rpx;
+  margin-bottom: 18rpx;
+  border-radius: 24rpx;
+  background: linear-gradient(135deg, #eaf7ff 0%, #effdf4 100%);
+  border: 1px solid #dceaf6;
+}
+
+.hero-title {
+  color: var(--text-main);
+  font-size: 38rpx;
+  font-weight: 900;
+}
+
+.hero-desc {
+  margin-top: 10rpx;
+  color: var(--text-sub);
+  font-size: 26rpx;
+  line-height: 1.55;
+}
+
+.panel {
+  padding: 22rpx;
+}
+
+.label {
+  color: var(--text-main);
+  font-size: 28rpx;
+  font-weight: 800;
+  margin-bottom: 14rpx;
+}
+
+.picker {
+  min-height: 82rpx;
+  padding: 20rpx;
+  margin-bottom: 18rpx;
+  border: 1px solid var(--border);
+  border-radius: 16rpx;
+  background: #fbfdff;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.primary,
+.ghost {
+  width: 100%;
+  min-height: 84rpx;
+  margin-top: 14rpx;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.primary {
+  color: #fff;
+  background: linear-gradient(135deg, #2468ff 0%, #16a34a 100%);
+}
+
+.ghost {
+  color: #2468ff;
+  background: #eef4ff;
+}

@@ -1,0 +1,313 @@
+.settings-menu {
+  min-height: 100vh;
+  padding: 20rpx 16rpx calc(24rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.menu-head {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  padding: 12rpx 4rpx 22rpx;
+}
+
+.gear-mark {
+  width: 76rpx;
+  height: 76rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9rpx;
+  border-radius: 20rpx;
+  background: #eef4ff;
+  color: var(--primary);
+}
+
+.menu-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.gear-line {
+  position: relative;
+  width: 38rpx;
+  height: 5rpx;
+  border-radius: 999rpx;
+  background: var(--primary);
+}
+
+.gear-line::after {
+  content: "";
+  position: absolute;
+  top: -5rpx;
+  width: 13rpx;
+  height: 13rpx;
+  border-radius: 50%;
+  background: #fff;
+  border: 3rpx solid var(--primary);
+  box-sizing: border-box;
+}
+
+.gear-one::after {
+  left: 5rpx;
+}
+
+.gear-two::after {
+  right: 5rpx;
+}
+
+.gear-three::after {
+  left: 16rpx;
+}
+
+.menu-title {
+  color: var(--text-main);
+  font-size: 36rpx;
+  font-weight: 800;
+}
+
+.menu-subtitle {
+  margin-top: 10rpx;
+  color: var(--text-sub);
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.menu-list {
+  padding: 0;
+  border-radius: 14rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.menu-item {
+  width: 100%;
+  min-height: 118rpx;
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  padding: 18rpx 18rpx;
+  background: transparent;
+  border-radius: 0;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.menu-item + .menu-item {
+  border-top: 1px solid var(--border);
+}
+
+.menu-icon {
+  flex: none;
+  position: relative;
+  width: 58rpx;
+  height: 58rpx;
+  border-radius: 16rpx;
+  background: #eef4ff;
+}
+
+.api-icon {
+  background: #eef4ff;
+}
+
+.key-ring {
+  position: absolute;
+  left: 13rpx;
+  top: 17rpx;
+  width: 18rpx;
+  height: 18rpx;
+  border: 5rpx solid var(--primary);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.key-stem {
+  position: absolute;
+  left: 29rpx;
+  top: 26rpx;
+  width: 19rpx;
+  height: 5rpx;
+  border-radius: 999rpx;
+  background: var(--primary);
+}
+
+.key-stem::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 5rpx;
+  width: 5rpx;
+  height: 8rpx;
+  background: var(--primary);
+}
+
+.privacy-icon {
+  background: #eefbf5;
+}
+
+.lock-shackle {
+  position: absolute;
+  left: 18rpx;
+  top: 12rpx;
+  width: 22rpx;
+  height: 20rpx;
+  border: 5rpx solid #19a66a;
+  border-bottom: none;
+  border-radius: 18rpx 18rpx 0 0;
+  box-sizing: border-box;
+}
+
+.lock-body {
+  position: absolute;
+  left: 15rpx;
+  top: 28rpx;
+  width: 28rpx;
+  height: 21rpx;
+  border-radius: 7rpx;
+  background: #19a66a;
+}
+
+.lock-body::after {
+  content: "";
+  position: absolute;
+  left: 12rpx;
+  top: 6rpx;
+  width: 5rpx;
+  height: 9rpx;
+  border-radius: 999rpx;
+  background: #fff;
+}
+
+/* Keep old class harmless if cached WXML references it during hot reload. */
+.shield-mark {
+  width: 24rpx;
+  height: 32rpx;
+  background: #19a66a;
+  border-radius: 12rpx 12rpx 16rpx 16rpx;
+}
+
+.doc-icon {
+  background: #fff5e8;
+}
+
+.study-icon {
+  background: #edfdf4;
+}
+
+.book-cover {
+  position: absolute;
+  left: 15rpx;
+  top: 13rpx;
+  width: 30rpx;
+  height: 34rpx;
+  border-radius: 6rpx;
+  background: #16a34a;
+  box-shadow: inset 7rpx 0 0 rgba(255, 255, 255, 0.22);
+}
+
+.book-line {
+  position: absolute;
+  left: 25rpx;
+  top: 24rpx;
+  width: 13rpx;
+  height: 4rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+}
+
+.doc-icon::before {
+  content: "";
+  position: absolute;
+  left: 17rpx;
+  top: 11rpx;
+  width: 25rpx;
+  height: 34rpx;
+  border: 4rpx solid #e18a23;
+  border-radius: 5rpx;
+  box-sizing: border-box;
+}
+
+.doc-line {
+  position: absolute;
+  left: 23rpx;
+  top: 24rpx;
+  width: 14rpx;
+  height: 4rpx;
+  border-radius: 999rpx;
+  background: #e18a23;
+}
+
+.doc-line.short {
+  top: 34rpx;
+  width: 10rpx;
+}
+
+.danger-icon {
+  background: #fff0f0;
+}
+
+.trash-lid {
+  position: absolute;
+  left: 18rpx;
+  top: 14rpx;
+  width: 22rpx;
+  height: 5rpx;
+  border-radius: 999rpx;
+  background: #e55353;
+}
+
+.trash-lid::before {
+  content: "";
+  position: absolute;
+  left: 7rpx;
+  top: -6rpx;
+  width: 8rpx;
+  height: 5rpx;
+  border-radius: 4rpx 4rpx 0 0;
+  background: #e55353;
+}
+
+.trash-body {
+  position: absolute;
+  left: 16rpx;
+  top: 24rpx;
+  width: 26rpx;
+  height: 25rpx;
+  border: 4rpx solid #e55353;
+  border-top: none;
+  border-radius: 0 0 7rpx 7rpx;
+  box-sizing: border-box;
+}
+
+.danger-title,
+.danger-arrow {
+  color: #e55353;
+}
+
+.item-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.item-title {
+  color: var(--text-main);
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.item-desc {
+  color: var(--text-sub);
+  font-size: 24rpx;
+  line-height: 1.4;
+}
+
+.item-arrow {
+  flex: none;
+  color: #9aa8c2;
+  font-size: 46rpx;
+  line-height: 1;
+}

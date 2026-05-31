@@ -1,0 +1,47 @@
+<navigation-bar title="隐私与协议" back="{{showBack}}" color="black" background="#FFF"></navigation-bar>
+<view class="legal-page">
+  <scroll-view class="legal-scroll" scroll-y="{{true}}">
+    <view class="hero">
+      <view class="app-name">问屿AI</view>
+      <view class="hero-title">使用前请阅读并同意</view>
+      <view class="hero-subtitle">为保障你的个人信息和 API Key 安全，首次使用前需要确认《隐私政策》和《用户协议》。</view>
+    </view>
+
+    <view wx:if="{{showPrivacy}}" class="card legal-card">
+      <view class="doc-title">问屿AI隐私政策</view>
+      <view class="date">生效日期：2026年5月29日</view>
+      <view class="intro">问屿AI为个人开发者提供的AI工具类小程序。我们重视用户个人信息与数据安全。本政策用于说明本小程序如何收集、使用、保存、保护和处理你的相关信息。</view>
+      <block wx:for="{{privacySections}}" wx:key="title">
+        <view class="section">
+          <view class="section-title">{{item.title}}</view>
+          <text class="section-body" selectable="{{true}}">{{item.body}}</text>
+        </view>
+      </block>
+    </view>
+
+    <view wx:if="{{showTerms}}" class="card legal-card">
+      <view class="doc-title">问屿AI用户协议</view>
+      <view class="date">生效日期：2026年5月29日</view>
+      <view class="intro">欢迎使用问屿AI。本协议是用户与本小程序个人开发者之间关于使用问屿AI服务所订立的协议。使用本小程序，即表示你已阅读、理解并同意本协议内容。</view>
+      <block wx:for="{{termsSections}}" wx:key="title">
+        <view class="section">
+          <view class="section-title">{{item.title}}</view>
+          <text class="section-body" selectable="{{true}}">{{item.body}}</text>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{showConfirm}}" class="confirm-bar">
+    <checkbox-group bindchange="onAgreeChange">
+      <label class="agree-row">
+        <checkbox value="agree" checked="{{agreed}}" color="#2468ff" />
+        <text>我已阅读并同意《隐私政策》和《用户协议》</text>
+      </label>
+    </checkbox-group>
+    <view class="buttons">
+      <button class="secondary" bindtap="onReject">不同意</button>
+      <button class="primary" disabled="{{!agreed}}" bindtap="onAccept">同意并继续</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<navigation-bar title="HTML预览" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view class="preview-page">
+  <view class="preview-tabs">
+    <view class="tab {{activeTab === 'preview' ? 'active' : ''}}" data-tab="preview" bindtap="switchTab">预览</view>
+    <view class="tab {{activeTab === 'code' ? 'active' : ''}}" data-tab="code" bindtap="switchTab">代码</view>
+  </view>
+
+  <scroll-view class="preview-body" scroll-y="{{true}}">
+    <view wx:if="{{activeTab === 'preview'}}" class="render-box">
+      <view wx:if="{{previewNotice}}" class="preview-notice">{{previewNotice}}</view>
+      <view wx:if="{{previewError}}" class="preview-error">
+        <text>{{previewError}}</text>
+        <button class="copy-error" bindtap="copyPreviewError">复制报错</button>
+      </view>
+      <rich-text nodes="{{html}}"></rich-text>
+    </view>
+    <view wx:else class="code-box">
+      <text selectable="{{true}}">{{code}}</text>
+    </view>
+  </scroll-view>
+</view>

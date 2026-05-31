@@ -1,0 +1,91 @@
+<navigation-bar title="API管理" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="settings-scroll" scroll-y="{{true}}">
+  <view class="container settings-page">
+    <view wx:if="{{isFirstSetup}}" class="setup-guide">
+      <view>
+        <view class="setup-title">先设置 API</view>
+        <view class="setup-desc">填写你的 Base URL、模型 ID 和 API Key 后即可开始对话。也可以先跳过，之后在设置里再添加。</view>
+      </view>
+      <text class="skip-link" bindtap="skipFirstSetup">跳过</text>
+    </view>
+
+    <view class="card panel">
+      <view class="section-title">当前配置</view>
+      <picker mode="selector" range="{{configNames}}" value="{{activeConfigIndex}}" bindchange="onSwitchConfig">
+        <view class="picker">{{configNames[activeConfigIndex] || '请选择配置'}}</view>
+      </picker>
+
+      <view class="section-title">当前模型</view>
+      <picker mode="selector" range="{{activeModels}}" value="{{activeModelIndex}}" bindchange="onSwitchModel">
+        <view class="picker">{{activeModels[activeModelIndex] || '请选择模型'}}</view>
+      </picker>
+    </view>
+
+    <view class="card panel form">
+      <view class="section-title">新增 API 配置</view>
+      <view class="section-title small-title">先选择这条 API 对应的模型</view>
+      <picker mode="selector" range="{{modelLabels}}" value="{{draftModelIndex}}" bindchange="onDraftModelChange">
+        <view class="picker">{{modelLabels[draftModelIndex] || '请选择模型'}}</view>
+      </picker>
+      <input class="input" placeholder="自定义模型 ID（例如：gpt-4o-mini / claude-3-5-sonnet / deepseek-chat）" value="{{draftCustomModel}}" bindinput="onCustomModelInput" />
+      <view class="model-hint">正在添加：{{draftCustomModel || modelLabels[draftModelIndex] || '未选择模型'}}</view>
+      <input class="input" placeholder="名称（如：DeepSeek 主账号）" value="{{draftName}}" bindinput="onNameInput" />
+      <input class="input" placeholder="Base URL（默认 https://api.deepseek.com）" value="{{draftBaseUrl}}" bindinput="onBaseUrlInput" />
+      <input class="input" placeholder="API Key" password="{{true}}" value="{{draftApiKey}}" bindinput="onApiKeyInput" />
+      <view class="multimodal-box">
+        <view class="multimodal-head">
+          <view>
+            <view class="multimodal-title">多模态</view>
+            <view class="multimodal-desc">开启后聊天页才显示生成图、识别图、上传文件。</view>
+          </view>
+          <switch checked="{{draftMultimodalEnabled}}" color="#2468ff" bindchange="onMultimodalChange" />
+        </view>
+        <view wx:if="{{draftMultimodalEnabled}}" class="ability-list">
+          <label class="ability-item">
+            <text>生成图</text>
+            <switch checked="{{draftImageGeneration}}" color="#2468ff" bindchange="onImageGenerationChange" />
+          </label>
+          <label class="ability-item">
+            <text>识别图</text>
+            <switch checked="{{draftImageRecognition}}" color="#2468ff" bindchange="onImageRecognitionChange" />
+          </label>
+          <label class="ability-item">
+            <text>上传文件</text>
+            <switch checked="{{draftFileUpload}}" color="#2468ff" bindchange="onFileUploadChange" />
+          </label>
+        </view>
+      </view>
+      <button class="primary" bindtap="onAddConfig">添加配置</button>
+    </view>
+
+    <view class="card panel">
+      <view class="section-title">已有配置</view>
+      <block wx:for="{{configs}}" wx:key="id" wx:for-item="cfg">
+        <view class="cfg-item">
+          <view class="cfg-head">
+            <text class="cfg-name">{{cfg.name}}</text>
+            <text class="cfg-url">{{cfg.baseUrl}}</text>
+            <text class="cfg-mm">{{cfg.multimodalText}}</text>
+            <view class="ability-tags">
+              <block wx:for="{{cfg.abilityTags}}" wx:key="*this" wx:for-item="tag">
+                <text class="ability-tag">{{tag}}</text>
+              </block>
+            </view>
+          </view>
+          <view class="model-list">
+            <block wx:for="{{cfg.modelViews}}" wx:key="value" wx:for-item="model">
+              <view class="model-item">
+                <view class="model-info">
+                  <text class="model-name">{{model.label}}</text>
+                  <text class="model-id">{{model.value}}</text>
+                </view>
+                <text class="model-more" data-model="{{model.value}}" bindtap="onModelMore">更多</text>
+              </view>
+            </block>
+          </view>
+          <button class="danger" size="mini" data-id="{{cfg.id}}" bindtap="onDeleteConfig">删除配置</button>
+        </view>
+      </block>
+    </view>
+  </view>
+</scroll-view>

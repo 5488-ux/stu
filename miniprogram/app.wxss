@@ -1,0 +1,26 @@
+/** app.wxss */
+page {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --primary: #2468ff;
+  --text-main: #1f2a44;
+  --text-sub: #6a7592;
+  --border: #e7ecf6;
+  background: radial-gradient(circle at 15% 10%, #e6edff 0%, transparent 35%), linear-gradient(180deg, #f9fbff 0%, #f2f5fb 100%);
+  min-height: 100%;
+  color: var(--text-main);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18rpx;
+  box-shadow: 0 8rpx 30rpx rgba(49, 71, 138, 0.08);
+}

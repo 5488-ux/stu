@@ -1,0 +1,45 @@
+{
+  "projectname": "miniprogram-1",
+  "setting": {
+    "compileHotReLoad": false,
+    "urlCheck": true,
+    "coverView": false,
+    "lazyloadPlaceholderEnable": false,
+    "skylineRenderEnable": false,
+    "preloadBackgroundData": false,
+    "autoAudits": false,
+    "useApiHook": false,
+    "showShadowRootInWxmlPanel": false,
+    "useStaticServer": false,
+    "useLanDebug": false,
+    "showES6CompileOption": false,
+    "bigPackageSizeSupport": false,
+    "checkInvalidKey": true,
+    "ignoreDevUnusedFiles": true,
+    "useMultiFrameRuntime": false,
+    "useApiHostProcess": false,
+    "useIsolateContext": false,
+    "useCompilerPlugins": [],
+    "swc": false,
+    "disableSWC": true,
+    "sourceMap": false,
+    "uploadWithSourceMap": false
+  },
+  "libVersion": "latest",
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "glob",
+        "value": "**/*.ts"
+      },
+      {
+        "type": "glob",
+        "value": "typings/**"
+      },
+      {
+        "type": "file",
+        "value": "tsconfig.json"
+      }
+    ]
+  }
+}

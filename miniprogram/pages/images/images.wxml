@@ -1,0 +1,37 @@
+<navigation-bar title="图片作品" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="images-scroll" scroll-y="{{true}}">
+  <view class="container images-page">
+    <view class="page-head">
+      <view>
+        <view class="title">图片生成历史</view>
+        <view class="subtitle">自动保存最近 80 张生成图。</view>
+      </view>
+      <text class="clear" bindtap="clearAll">清空</text>
+    </view>
+
+    <view wx:if="{{!records.length}}" class="empty">还没有生成图片。</view>
+
+    <block wx:for="{{records}}" wx:key="id" wx:for-item="item">
+      <view class="image-card">
+        <image
+          wx:if="{{!item.isDataUrl}}"
+          class="cover"
+          src="{{item.imageUrl}}"
+          mode="aspectFill"
+          data-url="{{item.imageUrl}}"
+          bindtap="previewImage"
+        />
+        <view wx:else class="base64-cover">Base64 图片</view>
+        <view class="info">
+          <view class="prompt">{{item.prompt}}</view>
+          <view class="meta">{{item.model}} / {{item.size}} / {{item.timeText}}</view>
+          <view class="actions">
+            <text class="action" data-url="{{item.imageUrl}}" bindtap="copyImageUrl">复制图片地址</text>
+            <text class="action" data-prompt="{{item.prompt}}" bindtap="copyPrompt">复制提示词</text>
+            <text class="action danger" data-id="{{item.id}}" bindtap="deleteRecord">删除</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</scroll-view>

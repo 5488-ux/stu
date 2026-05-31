@@ -1,0 +1,15 @@
+<navigation-bar title="历史对话" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="history-scroll" scroll-y="{{true}}">
+  <view class="history-page">
+    <block wx:for="{{sessions}}" wx:key="id" wx:for-item="item">
+      <view class="history-item">
+        <view class="history-main" data-id="{{item.id}}" bindtap="onOpenSession">
+          <view class="history-title">{{item.title}}</view>
+          <view class="history-preview">{{item.preview}}</view>
+          <view class="history-meta">{{item.timeText}} · {{item.countText}}</view>
+        </view>
+        <button class="delete-btn" size="mini" data-id="{{item.id}}" catchtap="onDeleteSession">删除</button>
+      </view>
+    </block>
+  </view>
+</scroll-view>

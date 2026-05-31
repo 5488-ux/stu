@@ -1,0 +1,46 @@
+<navigation-bar title="模型更多" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="usage-scroll" scroll-y="{{true}}">
+  <view class="usage-page">
+    <view class="summary-card">
+      <view class="summary-head">
+        <view>
+          <view class="model-name">{{label}}</view>
+          <view class="provider">{{provider}} · {{model}}</view>
+        </view>
+        <view class="cost">{{costText}}</view>
+      </view>
+      <view class="metrics">
+        <view class="metric">
+          <text class="metric-num">{{inputTokens}}</text>
+          <text class="metric-label">今日输入 token</text>
+        </view>
+        <view class="metric">
+          <text class="metric-num">{{outputTokens}}</text>
+          <text class="metric-label">今日输出 token</text>
+        </view>
+        <view class="metric">
+          <text class="metric-num">{{requests}}</text>
+          <text class="metric-label">今日请求</text>
+        </view>
+      </view>
+      <view class="price-row">输入：{{inputPrice}}</view>
+      <view class="price-row">输出：{{outputPrice}}</view>
+      <view class="note">{{note}}</view>
+    </view>
+
+    <view class="chart-card">
+      <view class="section-title">今日用量图</view>
+      <block wx:for="{{rows}}" wx:key="model" wx:for-item="item">
+        <view class="chart-row" data-model="{{item.model}}" bindtap="onSelectModel">
+          <view class="chart-label">
+            <text>{{item.label}}</text>
+            <text class="chart-cost">{{item.totalTokens}} token · {{item.costText}}</text>
+          </view>
+          <view class="bar-track">
+            <view class="bar-fill" style="width: {{item.barWidth}}%;"></view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</scroll-view>

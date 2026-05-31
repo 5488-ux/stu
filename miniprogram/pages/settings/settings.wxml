@@ -1,0 +1,72 @@
+<navigation-bar title="设置" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view class="container settings-menu">
+  <view class="menu-head">
+    <view class="gear-mark">
+      <view class="gear-line gear-one"></view>
+      <view class="gear-line gear-two"></view>
+      <view class="gear-line gear-three"></view>
+    </view>
+    <view class="menu-copy">
+      <view class="menu-title">问屿AI设置</view>
+      <view class="menu-subtitle">管理 API 配置、查看隐私政策和用户协议。</view>
+    </view>
+  </view>
+
+  <view class="card menu-list">
+    <view class="menu-item" bindtap="goApi">
+      <view class="menu-icon api-icon">
+        <view class="key-ring"></view>
+        <view class="key-stem"></view>
+      </view>
+      <view class="item-main">
+        <text class="item-title">API管理</text>
+        <text class="item-desc">配置模型、Base URL 和 API Key</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goLearning">
+      <view class="menu-icon study-icon">
+        <view class="book-cover"></view>
+        <view class="book-line"></view>
+      </view>
+      <view class="item-main">
+        <text class="item-title">学习</text>
+        <text class="item-desc">设置年级，开启数学教材辅导模式</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goPrivacy">
+      <view class="menu-icon privacy-icon">
+        <view class="lock-shackle"></view>
+        <view class="lock-body"></view>
+      </view>
+      <view class="item-main">
+        <text class="item-title">隐私政策</text>
+        <text class="item-desc">查看个人信息与数据处理说明</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goTerms">
+      <view class="menu-icon doc-icon">
+        <view class="doc-line"></view>
+        <view class="doc-line short"></view>
+      </view>
+      <view class="item-main">
+        <text class="item-title">用户协议</text>
+        <text class="item-desc">查看服务说明和使用规则</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    <view class="menu-item danger-item" bindtap="clearAllData">
+      <view class="menu-icon danger-icon">
+        <view class="trash-lid"></view>
+        <view class="trash-body"></view>
+      </view>
+      <view class="item-main">
+        <text class="item-title danger-title">清除所有信息</text>
+        <text class="item-desc">删除 API、聊天记录、用量和本地缓存</text>
+      </view>
+      <text class="item-arrow danger-arrow">›</text>
+    </view>
+  </view>
+</view>

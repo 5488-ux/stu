@@ -1,0 +1,118 @@
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.usage-scroll {
+  flex: 1;
+  height: 0;
+}
+
+.usage-page {
+  padding: 20rpx 20rpx calc(20rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.summary-card,
+.chart-card {
+  padding: 22rpx;
+  margin-bottom: 18rpx;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18rpx;
+  box-shadow: 0 8rpx 30rpx rgba(49, 71, 138, 0.08);
+}
+
+.summary-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.model-name {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.provider,
+.note,
+.price-row {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: var(--text-sub);
+}
+
+.cost {
+  flex: none;
+  font-size: 32rpx;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.metrics {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 20rpx;
+}
+
+.metric {
+  flex: 1;
+  min-width: 0;
+  padding: 14rpx;
+  background: #f7faff;
+  border-radius: 14rpx;
+}
+
+.metric-num {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.metric-label {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 20rpx;
+  color: var(--text-sub);
+}
+
+.section-title {
+  margin-bottom: 16rpx;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.chart-row {
+  margin-bottom: 18rpx;
+}
+
+.chart-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12rpx;
+  font-size: 24rpx;
+  color: var(--text-main);
+}
+
+.chart-cost {
+  flex: none;
+  color: var(--text-sub);
+}
+
+.bar-track {
+  height: 14rpx;
+  margin-top: 8rpx;
+  overflow: hidden;
+  background: #edf2fb;
+  border-radius: 999rpx;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2468ff 0%, #46a1ff 100%);
+  border-radius: 999rpx;
+}

@@ -1,0 +1,103 @@
+<navigation-bar title="AI 对话" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="container chat-page">
+  <button class="settings-icon" aria-label="设置" bindtap="goSettings">
+    <view class="settings-line line-one"></view>
+    <view class="settings-line line-two"></view>
+    <view class="settings-line line-three"></view>
+  </button>
+  <scroll-view class="messages" scroll-y="{{true}}" scroll-with-animation="{{false}}" scroll-into-view="{{scrollToId}}" scroll-top="{{scrollTop}}" bindscroll="onMessageScroll">
+    <block wx:for="{{messages}}" wx:key="id" wx:for-item="item">
+      <view id="{{item.id}}" class="msg-row {{item.role === 'user' ? 'msg-right' : 'msg-left'}}">
+        <view class="bubble {{item.role === 'user' ? 'user' : 'assistant'}}">
+          <block wx:for="{{item.segments}}" wx:key="id" wx:for-item="segment">
+            <rich-text wx:if="{{segment.type === 'html'}}" nodes="{{segment.html}}"></rich-text>
+            <view wx:else class="code-card">
+              <view class="code-toolbar">
+                <text class="code-lang">{{segment.language}}</text>
+                <view class="code-actions">
+                  <text class="code-action" data-message-id="{{item.id}}" data-segment-id="{{segment.id}}" bindtap="copyCode">复制</text>
+                  <text wx:if="{{segment.canPreview}}" class="code-action" data-message-id="{{item.id}}" data-segment-id="{{segment.id}}" bindtap="previewCode">预览</text>
+                </view>
+              </view>
+              <scroll-view scroll-x="{{true}}" class="code-scroll">
+                <text class="code-text" selectable="{{true}}">{{segment.code}}</text>
+              </scroll-view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+    <view id="messages-bottom" class="scroll-anchor"></view>
+  </scroll-view>
+  <view wx:if="{{showBottomJump}}" class="bottom-jump" aria-label="回到底部" bindtap="scrollToBottom">
+    <view class="bottom-arrow"></view>
+  </view>
+
+  <view class="card composer">
+    <view class="topline">
+      <picker mode="selector" range="{{sessionNames}}" value="{{activeSessionIndex}}" bindchange="onSwitchSession">
+        <view class="session-picker">{{sessionNames[activeSessionIndex] || '新对话'}}</view>
+      </picker>
+      <view class="actions">
+        <text class="action-link" bindtap="onNewSession">新建</text>
+        <text class="action-link" bindtap="goHistory">历史</text>
+        <text class="action-link {{isStreaming ? 'disabled' : ''}}" bindtap="onSend">发送</text>
+      </view>
+    </view>
+    <picker class="model-picker" mode="selector" range="{{activeModels}}" value="{{activeModelIndex}}" bindchange="onSwitchModel">
+      <view class="model">{{activeName}} / {{activeModel}}</view>
+    </picker>
+    <view wx:if="{{learningEnabled}}" class="learning-row">
+      <text class="learning-label">学习 · {{learningGrade}}年级数学</text>
+      <view class="learning-toggle {{learningMode ? 'active' : ''}}" bindtap="toggleLearningMode">{{learningMode ? '学习中' : '学习'}}</view>
+    </view>
+    <view class="web-search-row">
+      <text class="web-search-label">联网搜索</text>
+      <switch checked="{{webSearchEnabled}}" color="#2468ff" bindchange="onWebSearchChange" />
+    </view>
+    <view wx:if="{{activeMultimodal.enabled}}" class="multimodal-actions">
+      <view
+        wx:if="{{activeMultimodal.imageGeneration}}"
+        class="mm-pill {{imageGenerationMode ? 'active' : ''}}"
+        bindtap="toggleImageGenerationMode"
+      >
+        生成图
+      </view>
+      <view wx:if="{{activeMultimodal.imageRecognition}}" class="mm-pill" bindtap="chooseImageForRecognition">识别图</view>
+      <view wx:if="{{activeMultimodal.fileUpload}}" class="mm-pill" bindtap="chooseFileForUpload">上传文件</view>
+      <view wx:if="{{activeMultimodal.imageGeneration}}" class="mm-pill ghost" bindtap="goImageHistory">作品</view>
+    </view>
+    <view wx:if="{{activeMultimodal.imageGeneration && imageGenerationMode}}" class="image-size-row">
+      <text class="image-size-label">图片比例</text>
+      <picker mode="selector" range="{{imageSizeOptions}}" value="{{imageSizeIndex}}" bindchange="onImageSizeChange">
+        <view class="image-size-picker">{{imageSizeOptions[imageSizeIndex]}}</view>
+      </picker>
+    </view>
+    <view wx:if="{{pendingAttachments.length}}" class="attachment-list">
+      <block wx:for="{{pendingAttachments}}" wx:key="id" wx:for-item="att">
+        <view class="attachment-chip">
+          <text>{{att.kind === 'image' ? '图片' : '文件'}}：{{att.name}}</text>
+          <text class="attachment-remove" data-id="{{att.id}}" bindtap="removeAttachment">×</text>
+        </view>
+      </block>
+    </view>
+    <view wx:if="{{pendingAttachments.length && activeMultimodal.imageRecognition}}" class="vision-templates">
+      <block wx:for="{{visionTemplates}}" wx:key="*this" wx:for-item="tpl">
+        <text class="vision-template" data-text="{{tpl}}" bindtap="applyVisionTemplate">{{tpl}}</text>
+      </block>
+    </view>
+    <textarea
+      class="input"
+      maxlength="2000"
+      placeholder="输入你的问题..."
+      value="{{inputText}}"
+      auto-height="{{true}}"
+      adjust-position="{{true}}"
+      cursor-spacing="24"
+      confirm-type="send"
+      show-confirm-bar="{{true}}"
+      bindconfirm="onConfirm"
+      bindinput="onInput"
+    />
+  </view>
+</view>

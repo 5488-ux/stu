@@ -1,0 +1,16 @@
+<navigation-bar title="学习设置" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view class="container learning-page">
+  <view class="hero-card">
+    <view class="hero-title">选择你的年级</view>
+    <view class="hero-desc">当前只开放数学题。AI 会按照后台教材 MD 讲解，坚决不超纲。</view>
+  </view>
+
+  <view class="card panel">
+    <view class="label">年级</view>
+    <picker mode="selector" range="{{grades}}" value="{{gradeIndex}}" bindchange="onGradeChange">
+      <view class="picker">{{grades[gradeIndex]}}</view>
+    </picker>
+    <button class="primary" bindtap="saveGrade">保存并开启学习</button>
+    <button wx:if="{{savedGrade}}" class="ghost" bindtap="clearGrade">关闭学习模式</button>
+  </view>
+</view>
